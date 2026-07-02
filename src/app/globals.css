@@ -21,12 +21,14 @@
 }
 
 html {
+  background: hsl(var(--background));
   scroll-behavior: smooth;
 }
 
 body {
   min-height: 100vh;
   margin: 0;
+  background-color: hsl(var(--background));
   background:
     radial-gradient(circle at 12% 22%, rgb(218 156 45 / 0.26), transparent 28rem),
     radial-gradient(circle at 88% 58%, rgb(218 156 45 / 0.14), transparent 30rem),
@@ -60,6 +62,7 @@ body {
 
 .site-surface {
   min-height: 100vh;
+  background-color: hsl(var(--background));
   background:
     radial-gradient(circle at 18% 10%, rgb(218 156 45 / 0.24), transparent 28rem),
     radial-gradient(circle at 86% 36%, rgb(218 156 45 / 0.14), transparent 32rem),
