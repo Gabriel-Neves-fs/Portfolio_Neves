@@ -26,7 +26,7 @@ const quickStats = [
 
 export default function Home() {
   return (
-    <main className="overflow-hidden">
+    <main className="site-surface overflow-hidden">
       <section className="ink-panel relative">
         <div className="section-shell min-h-screen py-4 md:py-5">
           <nav className="glass-nav mx-auto flex w-full max-w-3xl items-center justify-between rounded-full p-2 text-sm md:sticky md:top-4 md:z-20">
