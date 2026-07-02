@@ -109,6 +109,8 @@ export function TiltedCard({
             src={imageSrc}
             alt={altText}
             className="tilted-card-img"
+            decoding="async"
+            loading="eager"
             style={{ width: imageWidth, height: imageHeight }}
             onError={() => setImageFailed(true)}
           />

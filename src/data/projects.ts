@@ -60,5 +60,24 @@ export const projects: Project[] = [
       "Fluxo pensado para investigação técnica",
       "Interface leve para consulta durante a rotina"
     ]
+  },
+  {
+    title: "Validação de Emails VTEX",
+    slug: "automacao-emails-vtex",
+    description:
+      "Automação RPA em Python para validar emails em massa contra API pública de Master Data da VTEX, com controle de velocidade e consolidação em planilha Excel.",
+    problem:
+      "Reduzir o trabalho manual na validação de emails, diminuindo erros operacionais e acelerando o processamento de dados.",
+    stack: ["RPA", "Python", "Pandas", "OpenPyXL", "VTEX Master Data API", "Excel"],
+    status: "Publicado",
+    githubUrl:
+      "https://github.com/Gabriel-Neves-fs/automacao_consulta_emails_massa_vtex",
+    images: [],
+    highlights: [
+      "Consultas em massa com controle de velocidade",
+      "Rate limiting para evitar excesso de requisições",
+      "Leitura e consolidação de dados em planilha Excel",
+      "RPA criada a partir de necessidade real do ambiente de trabalho"
+    ]
   }
 ];

@@ -25,13 +25,22 @@ import { skillGroups } from "@/data/skills";
 const quickStats = [
   "DEV Full Stack",
   "Suporte técnico pleno",
+  "RPA e automações Python",
   "Projetos reais publicados",
-  "Next.js · Node · PostgreSQL · TypeScript · fastify",
+];
+
+const heroCompetencies = [
+  "Sistemas web",
+  "Front-end: Next.js e TypeScript",
+  "Back-end: Node.js e Fastify",
+  "Banco de dados: PostgreSQL e Firebase",
+  "RPA e automações: Python, Pandas e OpenPyXL",
 ];
 
 function ProjectPreview({ project }: { project: Project }) {
   const galleryDuration = `${Math.max(project.images.length * 3.2, 6.4)}s`;
-  const galleryShift = `-${(project.images.length - 1) * 100}%`;
+  const galleryShift =
+    project.images.length > 1 ? `-${(project.images.length - 1) * 100}%` : "0%";
 
   return (
     <div
@@ -56,20 +65,29 @@ function ProjectPreview({ project }: { project: Project }) {
           </span>
         </div>
         <div className="preview-screen">
-          <div className="preview-gallery">
-            {project.images.map((image, index) => (
-              <span
-                className="preview-shot"
-                key={image}
-                style={
-                  {
-                    "--project-image": `url(${image})`,
-                    "--shot-index": index,
-                  } as CSSProperties
-                }
-              />
-            ))}
-          </div>
+          {project.images.length > 0 ? (
+            <div className="preview-gallery">
+              {project.images.map((image, index) => (
+                <span
+                  className="preview-shot"
+                  key={image}
+                  style={
+                    {
+                      "--project-image": `url(${image})`,
+                      "--shot-index": index,
+                    } as CSSProperties
+                  }
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="preview-fallback" aria-hidden="true">
+              <span>rpa</span>
+              <span>python</span>
+              <span>pandas</span>
+              <span>api</span>
+            </div>
+          )}
           <div className="preview-scan" />
           <div className="preview-caption">
             <span className="preview-kicker">Preview</span>
@@ -84,7 +102,7 @@ function ProjectPreview({ project }: { project: Project }) {
 export default function Home() {
   return (
     <main className="site-surface relative overflow-hidden">
-      <a className="skip-link" href="#about">
+      <a className="skip-link" href="#experience">
         Pular para o conteúdo
       </a>
       <div className="dot-field-layer" aria-hidden="true">
@@ -112,16 +130,16 @@ export default function Home() {
             </a>
             <div className="hidden items-center gap-1 text-white/55 md:flex">
               <a
-                href="#about"
-                className="rounded-full px-4 py-3 font-bold hover:bg-white/8 hover:text-white"
-              >
-                Sobre
-              </a>
-              <a
                 href="#experience"
                 className="rounded-full px-4 py-3 font-bold hover:bg-white/8 hover:text-white"
               >
                 Carreira
+              </a>
+              <a
+                href="#about"
+                className="rounded-full px-4 py-3 font-bold hover:bg-white/8 hover:text-white"
+              >
+                Sobre
               </a>
               <a
                 href="#stack"
@@ -169,7 +187,7 @@ export default function Home() {
               </div>
 
               <p className="mb-8 text-xs font-black uppercase tracking-[0.24em] text-white/42">
-                Full Stack DEV · APIs · Produto
+                Full Stack DEV · RPA · APIs · Produto
               </p>
               <h1 className="animate-rise delay-2 max-w-4xl font-display text-[4.6rem] font-black leading-[0.78] text-[#fff3e8] md:text-[8.4rem] lg:text-[9.6rem]">
                 {profile.name}
@@ -196,6 +214,22 @@ export default function Home() {
               <p className="mt-7 max-w-2xl text-base font-semibold leading-8 text-white/62 md:text-lg">
                 {profile.shortBio}
               </p>
+
+              <div className="mt-6 max-w-2xl rounded-2xl border border-white/10 bg-black/20 p-4">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-primary">
+                  Competências principais
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {heroCompetencies.map((competency) => (
+                    <span
+                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm font-bold text-white/70"
+                      key={competency}
+                    >
+                      {competency}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild>
@@ -288,10 +322,51 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="experience" className="border-t border-white/10 py-20">
+        <div className="section-shell">
+          <SectionHeading
+            eyebrow="01 / Experiência"
+            title="Trajetória conectada à engenharia."
+            description="Atuar com sustentação, suporte técnico e automações me treinou para investigar, priorizar, validar hipóteses e transformar problemas reais em soluções técnicas."
+          />
+          <div className="grid gap-5">
+            {experiences.map((experience) => (
+              <article
+                className="warm-card grid gap-6 p-6 md:grid-cols-[0.8fr_1.2fr]"
+                key={experience.role}
+              >
+                <div>
+                  <BriefcaseBusiness className="mb-4 text-primary" />
+                  <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground">
+                    {experience.period}
+                  </p>
+                  <h3 className="mt-2 font-display text-3xl font-black">
+                    {experience.role}
+                  </h3>
+                  <p className="mt-2 font-bold text-primary">
+                    {experience.company}
+                  </p>
+                </div>
+                <div>
+                  <p className="leading-7 text-muted-foreground">
+                    {experience.summary}
+                  </p>
+                  <ul className="mt-5 grid gap-3 text-sm font-semibold">
+                    {experience.activities.map((activity) => (
+                      <li key={activity}>- {activity}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="about" className="border-t border-white/10 py-20">
         <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <SectionHeading
-            eyebrow="01 / Sobre"
+            eyebrow="02 / Sobre"
             title="Full Stack com base em sistemas reais."
             description="Meu foco profissional está em desenvolvimento full stack. A experiência atual como Analista de Suporte Técnico Pleno entra como diferencial: leitura de produção, investigação técnica e entendimento de operação."
           />
@@ -313,7 +388,7 @@ export default function Home() {
       <section id="stack" className="border-t border-white/10 py-20">
         <div className="section-shell">
           <SectionHeading
-            eyebrow="02 / Stack"
+            eyebrow="03 / Stack"
             title="Stack para construir produto de ponta a ponta."
             description="Minha base de desenvolvimento está em TypeScript, Next.js, Node.js e PostgreSQL, conectando interfaces bem cuidadas, APIs organizadas e dados estruturados em aplicações full stack."
           />
@@ -347,7 +422,7 @@ export default function Home() {
       <section id="projects" className="border-t border-white/10 py-20">
         <div className="section-shell">
           <SectionHeading
-            eyebrow="03 / Projetos"
+            eyebrow="04 / Projetos"
             title="Projetos que mostram produto, rotina técnica e evolução."
             description="Fintra e Bugsy representam dois lados da minha evolução: uma aplicação full stack publicada e uma extensão criada a partir de dor real de organização técnica."
           />
@@ -432,45 +507,6 @@ export default function Home() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section id="experience" className="border-t border-white/10 py-20">
-        <div className="section-shell">
-          <SectionHeading
-            eyebrow="04 / Experiência"
-            title="Trajetória conectada à engenharia."
-            description="Atuar com sustentação me treinou para investigar, priorizar, validar hipóteses e comunicar problemas técnicos com clareza."
-          />
-          {experiences.map((experience) => (
-            <article
-              className="warm-card grid gap-6 p-6 md:grid-cols-[0.8fr_1.2fr]"
-              key={experience.role}
-            >
-              <div>
-                <BriefcaseBusiness className="mb-4 text-primary" />
-                <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground">
-                  {experience.period}
-                </p>
-                <h3 className="mt-2 font-display text-3xl font-black">
-                  {experience.role}
-                </h3>
-                <p className="mt-2 font-bold text-primary">
-                  {experience.company}
-                </p>
-              </div>
-              <div>
-                <p className="leading-7 text-muted-foreground">
-                  {experience.summary}
-                </p>
-                <ul className="mt-5 grid gap-3 text-sm font-semibold">
-                  {experience.activities.map((activity) => (
-                    <li key={activity}>- {activity}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          ))}
         </div>
       </section>
 

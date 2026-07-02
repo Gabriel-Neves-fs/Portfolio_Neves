@@ -1,10 +1,13 @@
 import type { IconType } from "react-icons";
 import {
   SiFastify,
+  SiFirebase,
   SiNextdotjs,
   SiNodedotjs,
+  SiPandas,
   SiPostgresql,
   SiPrisma,
+  SiPython,
   SiReact,
   SiShadcnui,
   SiSupabase,
@@ -26,8 +29,11 @@ const stackIcons: Record<string, IconType> = {
   "Node.js": SiNodedotjs,
   Fastify: SiFastify,
   Prisma: SiPrisma,
+  Python: SiPython,
+  Pandas: SiPandas,
   PostgreSQL: SiPostgresql,
-  Supabase: SiSupabase
+  Supabase: SiSupabase,
+  Firebase: SiFirebase
 };
 
 export function StackCarousel({ groups }: StackCarouselProps) {

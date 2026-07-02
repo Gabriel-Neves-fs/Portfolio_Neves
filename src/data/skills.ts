@@ -10,10 +10,14 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     category: "Backend",
-    skills: ["Node.js", "Fastify", "Prisma", "REST APIs"]
+    skills: ["Node.js", "Fastify", "Prisma", "REST APIs", "Python"]
   },
   {
     category: "Banco de dados",
-    skills: ["PostgreSQL", "SQL", "Supabase"]
+    skills: ["PostgreSQL", "SQL", "Supabase", "Firebase"]
+  },
+  {
+    category: "Automações",
+    skills: ["RPA", "Python", "Pandas", "OpenPyXL", "Excel", "APIs"]
   }
 ];
