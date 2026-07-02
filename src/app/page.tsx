@@ -12,6 +12,7 @@ import {
 import type { CSSProperties } from "react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/section-heading";
+import { TiltedCard } from "@/components/tilted-card";
 import { experiences } from "@/data/experiences";
 import { profile } from "@/data/profile";
 import { projects, type Project } from "@/data/projects";
@@ -170,17 +171,26 @@ export default function Home() {
             </div>
 
             <aside className="animate-rise delay-2 relative mx-auto w-full max-w-[520px] lg:mt-28">
-              <div
-                className="hero-photo corner-frame float-soft relative aspect-[4/5] border border-white/12"
-                style={{ "--hero-photo": `url(${profile.photoUrl})` } as CSSProperties}
-              >
-                <div className="absolute -left-6 top-10 rounded-full border border-white/12 bg-black/70 px-4 py-2 text-xs font-black text-white/75 shadow-2xl">
+              <div className="corner-frame relative aspect-[4/5]">
+                <TiltedCard
+                  imageSrc={profile.photoUrl}
+                  altText={`Foto de ${profile.name}`}
+                  containerHeight="100%"
+                  containerWidth="100%"
+                  imageHeight="100%"
+                  imageWidth="100%"
+                  rotateAmplitude={9}
+                  scaleOnHover={1.04}
+                  showTooltip={false}
+                  className="hero-tilt-card"
+                />
+                <div className="floating-badge floating-badge-a absolute -left-6 top-10 rounded-full border border-white/12 bg-black/70 px-4 py-2 text-xs font-black text-white/75 shadow-2xl">
                   <span className="text-accent">•</span> Técnico Pleno · Full Stack
                 </div>
-                <div className="absolute -right-6 top-1/2 rounded-full border border-white/12 bg-black/70 px-4 py-2 text-xs font-black text-white/75 shadow-2xl">
+                <div className="floating-badge floating-badge-b absolute -right-6 top-1/2 rounded-full border border-white/12 bg-black/70 px-4 py-2 text-xs font-black text-white/75 shadow-2xl">
                   <span className="text-accent">•</span> Fintra · Bugsy
                 </div>
-                <div className="absolute -bottom-6 left-8 rounded-full border border-white/12 bg-black/70 px-4 py-2 text-xs font-black text-white/75 shadow-2xl">
+                <div className="floating-badge floating-badge-c absolute -bottom-6 left-8 rounded-full border border-white/12 bg-black/70 px-4 py-2 text-xs font-black text-white/75 shadow-2xl">
                   <span className="text-accent">•</span> APIs · Logs · Integrações
                 </div>
               </div>

@@ -110,6 +110,36 @@ body {
   background-size: cover;
 }
 
+.hero-tilt-card .tilted-card-inner {
+  height: 100%;
+  width: 100%;
+}
+
+.hero-tilt-card .tilted-card-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgb(10 7 6 / 0), rgb(10 7 6 / 0.22)),
+    radial-gradient(circle at 30% 20%, rgb(255 255 255 / 0.12), transparent 18rem);
+  pointer-events: none;
+}
+
+.floating-badge {
+  z-index: 4;
+  backdrop-filter: blur(14px);
+  animation: float-card 5.8s ease-in-out infinite;
+}
+
+.floating-badge-b {
+  animation-delay: 700ms;
+}
+
+.floating-badge-c {
+  animation-delay: 1.4s;
+}
+
 .project-preview {
   position: relative;
   min-height: 230px;
@@ -305,6 +335,17 @@ body {
 
   50% {
     transform: translateY(-12px);
+  }
+}
+
+@keyframes float-card {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -10px, 0);
   }
 }
 
