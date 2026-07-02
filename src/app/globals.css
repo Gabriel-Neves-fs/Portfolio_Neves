@@ -205,6 +205,31 @@ body {
   animation-delay: 1.4s;
 }
 
+@media (max-width: 640px) {
+  .floating-badge {
+    max-width: calc(100% - 24px);
+    padding: 0.45rem 0.7rem;
+    font-size: 0.68rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .floating-badge-a {
+    top: 0.9rem;
+    left: 0.75rem;
+  }
+
+  .floating-badge-b {
+    top: 44%;
+    right: 0.75rem;
+  }
+
+  .floating-badge-c {
+    bottom: 0.75rem;
+    left: 0.75rem;
+  }
+}
+
 .project-preview {
   position: relative;
   min-height: 230px;
