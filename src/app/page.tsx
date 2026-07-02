@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/section-heading";
 import { experiences } from "@/data/experiences";
 import { profile } from "@/data/profile";
-import { projects } from "@/data/projects";
+import { projects, type Project } from "@/data/projects";
 import { skillGroups } from "@/data/skills";
 
 const quickStats = [
@@ -23,6 +23,45 @@ const quickStats = [
   "Produtos web reais",
   "Next.js · Node · PostgreSQL"
 ];
+
+function ProjectPreview({ project }: { project: Project }) {
+  const bars = project.slug === "fintra" ? [58, 82, 45, 70] : [72, 42, 64, 88];
+
+  return (
+    <div
+      className="project-preview mb-5"
+      style={{ "--project-image": `url(${project.image})` } as CSSProperties}
+    >
+      <div className="preview-window">
+        <div className="preview-topbar">
+          <span className="preview-dot" />
+          <span className="preview-dot opacity-70" />
+          <span className="preview-dot opacity-40" />
+          <span className="ml-auto text-[10px] font-black uppercase tracking-[0.18em] text-white/45">
+            {project.slug}
+          </span>
+        </div>
+        <div className="preview-grid">
+          <div className="preview-side">
+            <span className="preview-line w-10/12" />
+            <span className="preview-line w-7/12" />
+            <span className="preview-line w-9/12" />
+            <span className="preview-line mt-4 w-6/12 bg-primary/60" />
+          </div>
+          <div className="preview-main">
+            {bars.map((height) => (
+              <span
+                className="preview-bar"
+                key={height}
+                style={{ height: `${height}%` }}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -56,7 +95,7 @@ export default function Home() {
           </nav>
 
           <div className="grid min-h-[calc(100vh-92px)] items-center gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr]">
-            <div>
+            <div className="animate-rise">
               <div className="mb-10 flex flex-wrap items-center justify-between gap-5 border-b border-white/10 pb-10 text-xs font-black uppercase tracking-[0.22em] text-white/45">
                 <span className="text-accent">- Portfólio · MMXXVI</span>
                 <span className="inline-flex items-center gap-2">
@@ -65,7 +104,7 @@ export default function Home() {
                 </span>
               </div>
 
-              <div className="mb-12 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-xs font-black">
+              <div className="animate-rise delay-1 mb-12 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-xs font-black">
                 <span className="inline-flex items-center gap-2 rounded-full bg-primary/12 px-3 py-1 text-primary">
                   <span className="h-2 w-2 rounded-full bg-primary" />
                   Disponível
@@ -76,10 +115,10 @@ export default function Home() {
               <p className="mb-8 text-xs font-black uppercase tracking-[0.24em] text-white/42">
                 Nº 01 — Suporte Técnico · APIs · Builder
               </p>
-              <h1 className="max-w-4xl font-display text-[4.6rem] font-black leading-[0.78] text-[#fff3e8] md:text-[8.4rem] lg:text-[9.6rem]">
+              <h1 className="animate-rise delay-2 max-w-4xl font-display text-[4.6rem] font-black leading-[0.78] text-[#fff3e8] md:text-[8.4rem] lg:text-[9.6rem]">
                 {profile.name}
               </h1>
-              <p className="-mt-2 font-display text-[4rem] font-black italic leading-none text-accent md:text-[7.2rem]">
+              <p className="animate-rise delay-3 -mt-2 font-display text-[4rem] font-black italic leading-none text-accent md:text-[7.2rem]">
                 Full Stack
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-white/52">
@@ -130,9 +169,9 @@ export default function Home() {
               </div>
             </div>
 
-            <aside className="relative mx-auto w-full max-w-[520px] lg:mt-28">
+            <aside className="animate-rise delay-2 relative mx-auto w-full max-w-[520px] lg:mt-28">
               <div
-                className="hero-photo corner-frame relative aspect-[4/5] border border-white/12"
+                className="hero-photo corner-frame float-soft relative aspect-[4/5] border border-white/12"
                 style={{ "--hero-photo": `url(${profile.photoUrl})` } as CSSProperties}
               >
                 <div className="absolute -left-6 top-10 rounded-full border border-white/12 bg-black/70 px-4 py-2 text-xs font-black text-white/75 shadow-2xl">
@@ -232,6 +271,7 @@ export default function Home() {
                 className="project-card warm-card p-5 transition-transform hover:-translate-y-1"
                 key={project.slug}
               >
+                <ProjectPreview project={project} />
                 <div className="mb-5 flex items-start justify-between gap-4">
                   <div>
                     <p className="text-xs font-black uppercase tracking-[0.22em] text-primary">
