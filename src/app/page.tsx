@@ -7,6 +7,7 @@ import {
   Github,
   Linkedin,
   Mail,
+  MessageCircle,
   MapPin,
 } from "lucide-react";
 import type { CSSProperties } from "react";
@@ -510,6 +511,18 @@ export default function Home() {
                 GitHub
               </a>
             </Button>
+            {profile.whatsappUrl ? (
+              <Button asChild variant="outline">
+                <a
+                  href={profile.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle size={18} />
+                  WhatsApp
+                </a>
+              </Button>
+            ) : null}
           </div>
         </div>
       </section>

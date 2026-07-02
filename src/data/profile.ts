@@ -8,5 +8,5 @@ export const profile = {
   linkedinUrl: "https://www.linkedin.com/in/gabriel-neves-4194a4389/",
   photoUrl: "/profile/gabriel.jpg",
   resumeUrl: "",
-  whatsappUrl: "",
+  whatsappUrl: "https://wa.link/wheb8b",
 };
