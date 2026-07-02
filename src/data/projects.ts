@@ -8,7 +8,7 @@ export type Project = {
   githubUrl: string;
   liveUrl?: string;
   downloadUrl?: string;
-  image: string;
+  images: string[];
   highlights: string[];
 };
 
@@ -24,7 +24,7 @@ export const projects: Project[] = [
     status: "Em evolução",
     githubUrl: "https://github.com/Gabriel-Neves-fs/fintra_public",
     liveUrl: "https://fintra-web-swart.vercel.app/",
-    image: "/projects/fintra.png",
+    images: ["/projects/fintra01.png", "/projects/fintra02.png"],
     highlights: [
       "Autenticação com cookies HTTP Only",
       "Dashboard mensal",
@@ -43,8 +43,15 @@ export const projects: Project[] = [
     status: "Publicado",
     githubUrl: "https://github.com/Gabriel-Neves-fs/bugsy_public",
     downloadUrl:
-      "https://drive.google.com/file/d/1L4L00ZCQ5T7yriPEDrEIV5VrnzgyNbbw/view?usp=drive_link",
-    image: "/projects/bugsy.png",
+      "https://drive.google.com/uc?export=download&id=1L4L00ZCQ5T7yriPEDrEIV5VrnzgyNbbw",
+    images: [
+      "/projects/bugsy01.png",
+      "/projects/bugsy02.png",
+      "/projects/bugsy03.png",
+      "/projects/bugsy04.png",
+      "/projects/bugsy05.png",
+      "/projects/bugsy06.png"
+    ],
     highlights: [
       "Extensão empacotada para instalação local",
       "Distribuição por arquivo externo",

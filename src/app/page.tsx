@@ -29,37 +29,48 @@ const quickStats = [
 ];
 
 function ProjectPreview({ project }: { project: Project }) {
-  const bars = project.slug === "fintra" ? [58, 82, 45, 70] : [72, 42, 64, 88];
+  const galleryDuration = `${Math.max(project.images.length * 3.2, 6.4)}s`;
+  const galleryShift = `-${(project.images.length - 1) * 100}%`;
 
   return (
     <div
       className="project-preview mb-5"
-      style={{ "--project-image": `url(${project.image})` } as CSSProperties}
+      style={
+        {
+          "--gallery-duration": galleryDuration,
+          "--gallery-shift": galleryShift
+        } as CSSProperties
+      }
     >
       <div className="preview-window">
         <div className="preview-topbar">
           <span className="preview-dot" />
           <span className="preview-dot opacity-70" />
           <span className="preview-dot opacity-40" />
+          <span className="preview-address">{project.title.toLowerCase()}.app</span>
           <span className="ml-auto text-[10px] font-black uppercase tracking-[0.18em] text-white/45">
             {project.slug}
           </span>
         </div>
-        <div className="preview-grid">
-          <div className="preview-side">
-            <span className="preview-line w-10/12" />
-            <span className="preview-line w-7/12" />
-            <span className="preview-line w-9/12" />
-            <span className="preview-line mt-4 w-6/12 bg-primary/60" />
-          </div>
-          <div className="preview-main">
-            {bars.map((height) => (
+        <div className="preview-screen">
+          <div className="preview-gallery">
+            {project.images.map((image, index) => (
               <span
-                className="preview-bar"
-                key={height}
-                style={{ height: `${height}%` }}
+                className="preview-shot"
+                key={image}
+                style={
+                  {
+                    "--project-image": `url(${image})`,
+                    "--shot-index": index
+                  } as CSSProperties
+                }
               />
             ))}
+          </div>
+          <div className="preview-scan" />
+          <div className="preview-caption">
+            <span className="preview-kicker">Preview</span>
+            <strong>{project.title}</strong>
           </div>
         </div>
       </div>
