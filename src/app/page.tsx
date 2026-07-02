@@ -7,8 +7,9 @@ import {
   Github,
   Linkedin,
   Mail,
-  TerminalSquare
+  MapPin
 } from "lucide-react";
+import type { CSSProperties } from "react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/section-heading";
 import { experiences } from "@/data/experiences";
@@ -25,38 +26,69 @@ const quickStats = [
 
 export default function Home() {
   return (
-    <main>
-      <section className="ink-panel">
-        <div className="section-shell min-h-[92vh] py-6 md:py-8">
-          <nav className="flex items-center justify-between border-b border-white/15 pb-4 text-sm">
-            <a className="font-black uppercase tracking-[0.18em]" href="#">
-              {profile.name}
+    <main className="overflow-hidden">
+      <section className="ink-panel relative">
+        <div className="section-shell min-h-screen py-4 md:py-5">
+          <nav className="glass-nav mx-auto flex w-full max-w-3xl items-center justify-between rounded-full p-2 text-sm md:sticky md:top-4 md:z-20">
+            <a className="rounded-full bg-white/8 px-4 py-3 font-black" href="#">
+              Início
             </a>
-            <div className="hidden gap-5 text-white/65 md:flex">
-              <a href="#about" className="hover:text-white">
+            <div className="hidden items-center gap-1 text-white/55 md:flex">
+              <a href="#about" className="rounded-full px-4 py-3 font-bold hover:bg-white/8 hover:text-white">
                 Sobre
               </a>
-              <a href="#projects" className="hover:text-white">
+              <a href="#experience" className="rounded-full px-4 py-3 font-bold hover:bg-white/8 hover:text-white">
+                Carreira
+              </a>
+              <a href="#stack" className="rounded-full px-4 py-3 font-bold hover:bg-white/8 hover:text-white">
+                Stack
+              </a>
+              <a href="#projects" className="rounded-full px-4 py-3 font-bold hover:bg-white/8 hover:text-white">
                 Projetos
               </a>
-              <a href="#contact" className="hover:text-white">
-                Contato
-              </a>
             </div>
+            <Button asChild variant="accent" className="rounded-full px-4 md:px-5">
+              <a href="#contact">
+                <Mail size={16} />
+                Conversar
+              </a>
+            </Button>
           </nav>
 
-          <div className="grid min-h-[78vh] items-center gap-10 py-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="grid min-h-[calc(100vh-92px)] items-center gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
-              <p className="mb-5 inline-flex border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-white/70">
-                Portfólio · Full Stack em evolução
+              <div className="mb-10 flex flex-wrap items-center justify-between gap-5 border-b border-white/10 pb-10 text-xs font-black uppercase tracking-[0.22em] text-white/45">
+                <span className="text-accent">- Portfólio · MMXXVI</span>
+                <span className="inline-flex items-center gap-2">
+                  <MapPin size={14} />
+                  Brasil
+                </span>
+              </div>
+
+              <div className="mb-12 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-xs font-black">
+                <span className="inline-flex items-center gap-2 rounded-full bg-primary/12 px-3 py-1 text-primary">
+                  <span className="h-2 w-2 rounded-full bg-primary" />
+                  Disponível
+                </span>
+                <span className="text-white/62">Projetos web e oportunidades full stack</span>
+              </div>
+
+              <p className="mb-8 text-xs font-black uppercase tracking-[0.24em] text-white/42">
+                Nº 01 — Suporte Técnico · APIs · Builder
               </p>
-              <h1 className="font-display text-5xl font-black leading-[0.9] md:text-7xl lg:text-8xl">
+              <h1 className="max-w-4xl font-display text-[4.6rem] font-black leading-[0.78] text-[#fff3e8] md:text-[8.4rem] lg:text-[9.6rem]">
                 {profile.name}
               </h1>
-              <p className="mt-6 max-w-2xl text-xl font-bold leading-8 text-white/90 md:text-2xl">
-                {profile.headline}.
+              <p className="-mt-2 font-display text-[4rem] font-black italic leading-none text-accent md:text-[7.2rem]">
+                Full Stack
               </p>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-white/68 md:text-lg">
+              <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-white/52">
+                <span className="rounded-full border border-white/12 px-4 py-2 font-bold text-white/88">
+                  {profile.headline}
+                </span>
+                <span>— projetos reais com Next.js, Node e PostgreSQL</span>
+              </div>
+              <p className="mt-7 max-w-2xl text-base font-semibold leading-8 text-white/62 md:text-lg">
                 {profile.shortBio}
               </p>
 
@@ -67,14 +99,22 @@ export default function Home() {
                     GitHub
                   </a>
                 </Button>
-                <Button asChild variant="outline" className="border-white/20 bg-white/5 text-white hover:bg-white/10">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-white/20 bg-white/5 text-white hover:bg-white/10"
+                >
                   <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">
                     <Linkedin size={18} />
                     LinkedIn
                   </a>
                 </Button>
                 {profile.resumeUrl ? (
-                  <Button asChild variant="outline" className="border-white/20 bg-white/5 text-white hover:bg-white/10">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-white/20 bg-white/5 text-white hover:bg-white/10"
+                  >
                     <a href={profile.resumeUrl} target="_blank" rel="noreferrer">
                       <FileText size={18} />
                       Currículo
@@ -90,35 +130,37 @@ export default function Home() {
               </div>
             </div>
 
-            <aside className="relative border border-white/15 bg-white/[0.06] p-5">
-              <div className="scanline absolute inset-0 opacity-30" />
-              <div className="relative">
-                <div className="mb-8 flex items-center justify-between">
-                  <span className="text-xs font-black uppercase tracking-[0.24em] text-white/60">
-                    Base profissional
-                  </span>
-                  <TerminalSquare className="text-accent" size={24} />
+            <aside className="relative mx-auto w-full max-w-[520px] lg:mt-28">
+              <div
+                className="hero-photo corner-frame relative aspect-[4/5] border border-white/12"
+                style={{ "--hero-photo": `url(${profile.photoUrl})` } as CSSProperties}
+              >
+                <div className="absolute -left-6 top-10 rounded-full border border-white/12 bg-black/70 px-4 py-2 text-xs font-black text-white/75 shadow-2xl">
+                  <span className="text-accent">•</span> Técnico Pleno · Full Stack
                 </div>
-                <div className="grid gap-3">
-                  {quickStats.map((stat, index) => (
-                    <div
-                      className="flex items-center gap-4 border border-white/15 bg-black/20 p-4"
-                      key={stat}
-                    >
-                      <span className="font-display text-4xl font-black text-accent">
-                        0{index + 1}
-                      </span>
-                      <span className="font-bold text-white/86">{stat}</span>
-                    </div>
-                  ))}
+                <div className="absolute -right-6 top-1/2 rounded-full border border-white/12 bg-black/70 px-4 py-2 text-xs font-black text-white/75 shadow-2xl">
+                  <span className="text-accent">•</span> Fintra · Bugsy
                 </div>
+                <div className="absolute -bottom-6 left-8 rounded-full border border-white/12 bg-black/70 px-4 py-2 text-xs font-black text-white/75 shadow-2xl">
+                  <span className="text-accent">•</span> APIs · Logs · Integrações
+                </div>
+              </div>
+              <div className="mt-12 grid gap-3 sm:grid-cols-2">
+                {quickStats.map((stat, index) => (
+                  <div className="warm-card p-4" key={stat}>
+                    <span className="font-display text-3xl font-black text-accent">
+                      0{index + 1}
+                    </span>
+                    <p className="mt-2 text-sm font-black text-white/74">{stat}</p>
+                  </div>
+                ))}
               </div>
             </aside>
           </div>
         </div>
       </section>
 
-      <section id="about" className="border-t border-foreground/15 py-20">
+      <section id="about" className="border-t border-white/10 py-20">
         <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <SectionHeading
             eyebrow="01 / Sobre"
@@ -144,7 +186,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-foreground/15 py-20">
+      <section id="stack" className="border-t border-white/10 py-20">
         <div className="section-shell">
           <SectionHeading
             eyebrow="02 / Stack"
@@ -153,7 +195,10 @@ export default function Home() {
           />
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {skillGroups.map((group) => (
-              <article className="border border-foreground/15 bg-card p-5 shadow-line transition-transform hover:-translate-y-1" key={group.category}>
+              <article
+                className="warm-card p-5 transition-transform hover:-translate-y-1"
+                key={group.category}
+              >
                 <h3 className="mb-4 flex items-center gap-2 font-display text-2xl font-black">
                   <Code2 size={22} className="text-primary" />
                   {group.category}
@@ -174,7 +219,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="border-t border-foreground/15 py-20">
+      <section id="projects" className="border-t border-white/10 py-20">
         <div className="section-shell">
           <SectionHeading
             eyebrow="03 / Projetos"
@@ -183,7 +228,10 @@ export default function Home() {
           />
           <div className="grid gap-5 lg:grid-cols-2">
             {projects.map((project) => (
-              <article className="project-card border border-foreground/15 bg-card p-5 shadow-line transition-transform hover:-translate-y-1" key={project.slug}>
+              <article
+                className="project-card warm-card p-5 transition-transform hover:-translate-y-1"
+                key={project.slug}
+              >
                 <div className="mb-5 flex items-start justify-between gap-4">
                   <div>
                     <p className="text-xs font-black uppercase tracking-[0.22em] text-primary">
@@ -196,7 +244,7 @@ export default function Home() {
                   <ArrowUpRight className="text-accent" />
                 </div>
                 <p className="text-muted-foreground">{project.description}</p>
-                <p className="mt-4 border-l-4 border-primary bg-background/70 py-2 pl-4 font-bold">
+                <p className="mt-4 border-l-4 border-primary bg-black/20 py-2 pl-4 font-bold">
                   {project.problem}
                 </p>
                 <div className="mt-5 flex flex-wrap gap-2">
@@ -243,7 +291,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-foreground/15 py-20">
+      <section id="experience" className="border-t border-white/10 py-20">
         <div className="section-shell">
           <SectionHeading
             eyebrow="04 / Experiência"
@@ -252,7 +300,7 @@ export default function Home() {
           />
           {experiences.map((experience) => (
             <article
-              className="grid gap-6 border border-foreground/15 bg-card p-6 shadow-line md:grid-cols-[0.8fr_1.2fr]"
+              className="warm-card grid gap-6 p-6 md:grid-cols-[0.8fr_1.2fr]"
               key={experience.role}
             >
               <div>
@@ -278,7 +326,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="border-t border-foreground/15 py-20">
+      <section id="contact" className="border-t border-white/10 py-20">
         <div className="section-shell grid gap-8 lg:grid-cols-[1fr_0.8fr]">
           <div>
             <p className="mb-3 text-xs font-black uppercase tracking-[0.24em] text-primary">
