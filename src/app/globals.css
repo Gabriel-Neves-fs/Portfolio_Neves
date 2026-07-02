@@ -157,6 +157,78 @@ body {
   opacity: 1;
 }
 
+.projects-carousel {
+  position: relative;
+}
+
+.projects-carousel::before,
+.projects-carousel::after {
+  content: "";
+  position: absolute;
+  top: 58px;
+  bottom: 0;
+  z-index: 2;
+  width: 72px;
+  pointer-events: none;
+}
+
+.projects-carousel::before {
+  left: 0;
+  background: linear-gradient(90deg, hsl(var(--background)), transparent);
+}
+
+.projects-carousel::after {
+  right: 0;
+  background: linear-gradient(270deg, hsl(var(--background)), transparent);
+}
+
+.projects-carousel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-padding-inline: 2px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.projects-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.project-slide {
+  flex: 0 0 min(100%, 560px);
+  scroll-snap-align: start;
+}
+
+.carousel-arrow {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgb(255 238 225 / 0.16);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 35% 20%, rgb(218 156 45 / 0.25), transparent 5rem),
+    rgb(16 10 8 / 0.78);
+  color: hsl(var(--foreground));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 18px 42px rgb(0 0 0 / 0.22);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.carousel-arrow:hover {
+  transform: translateY(-2px);
+  border-color: rgb(218 156 45 / 0.52);
+  color: hsl(var(--primary));
+}
+
+.carousel-arrow:active {
+  transform: translateY(0) scale(0.96);
+}
+
 .glass-nav {
   background: rgb(16 10 8 / 0.72);
   border: 1px solid rgb(255 238 225 / 0.12);
@@ -227,6 +299,21 @@ body {
   .floating-badge-c {
     bottom: 0.75rem;
     left: 0.75rem;
+  }
+
+  .projects-carousel::before,
+  .projects-carousel::after {
+    display: none;
+  }
+
+  .projects-carousel-track {
+    gap: 14px;
+    margin-inline: -16px;
+    padding-inline: 16px;
+  }
+
+  .project-slide {
+    flex-basis: calc(100vw - 32px);
   }
 }
 
