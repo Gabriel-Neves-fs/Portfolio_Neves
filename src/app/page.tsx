@@ -7,7 +7,7 @@ import {
   Github,
   Linkedin,
   Mail,
-  MapPin
+  MapPin,
 } from "lucide-react";
 import type { CSSProperties } from "react";
 import { DotField } from "@/components/dot-field";
@@ -22,10 +22,10 @@ import { projects, type Project } from "@/data/projects";
 import { skillGroups } from "@/data/skills";
 
 const quickStats = [
-  "DEV Full Stack em evolução",
+  "DEV Full Stack",
   "Suporte técnico pleno",
   "Projetos reais publicados",
-  "Next.js · Node · PostgreSQL"
+  "Next.js · Node · PostgreSQL · TypeScript · fastify",
 ];
 
 function ProjectPreview({ project }: { project: Project }) {
@@ -38,7 +38,7 @@ function ProjectPreview({ project }: { project: Project }) {
       style={
         {
           "--gallery-duration": galleryDuration,
-          "--gallery-shift": galleryShift
+          "--gallery-shift": galleryShift,
         } as CSSProperties
       }
     >
@@ -47,7 +47,9 @@ function ProjectPreview({ project }: { project: Project }) {
           <span className="preview-dot" />
           <span className="preview-dot opacity-70" />
           <span className="preview-dot opacity-40" />
-          <span className="preview-address">{project.title.toLowerCase()}.app</span>
+          <span className="preview-address">
+            {project.title.toLowerCase()}.app
+          </span>
           <span className="ml-auto text-[10px] font-black uppercase tracking-[0.18em] text-white/45">
             {project.slug}
           </span>
@@ -61,7 +63,7 @@ function ProjectPreview({ project }: { project: Project }) {
                 style={
                   {
                     "--project-image": `url(${image})`,
-                    "--shot-index": index
+                    "--shot-index": index,
                   } as CSSProperties
                 }
               />
@@ -81,7 +83,10 @@ function ProjectPreview({ project }: { project: Project }) {
 export default function Home() {
   return (
     <main className="site-surface relative overflow-hidden">
-      <div className="dot-field-layer">
+      <a className="skip-link" href="#about">
+        Pular para o conteúdo
+      </a>
+      <div className="dot-field-layer" aria-hidden="true">
         <DotField
           dotRadius={2.2}
           dotSpacing={13}
@@ -94,25 +99,47 @@ export default function Home() {
       </div>
       <section className="ink-panel relative z-10">
         <div className="section-shell min-h-screen py-4 md:py-5">
-          <nav className="glass-nav mx-auto flex w-full max-w-3xl items-center justify-between rounded-full p-2 text-sm md:sticky md:top-4 md:z-20">
-            <a className="rounded-full bg-white/8 px-4 py-3 font-black" href="#">
+          <nav
+            aria-label="Navegação principal"
+            className="glass-nav mx-auto flex w-full max-w-3xl items-center justify-between rounded-full p-2 text-sm md:sticky md:top-4 md:z-20"
+          >
+            <a
+              className="rounded-full bg-white/8 px-4 py-3 font-black"
+              href="#"
+            >
               Início
             </a>
             <div className="hidden items-center gap-1 text-white/55 md:flex">
-              <a href="#about" className="rounded-full px-4 py-3 font-bold hover:bg-white/8 hover:text-white">
+              <a
+                href="#about"
+                className="rounded-full px-4 py-3 font-bold hover:bg-white/8 hover:text-white"
+              >
                 Sobre
               </a>
-              <a href="#experience" className="rounded-full px-4 py-3 font-bold hover:bg-white/8 hover:text-white">
+              <a
+                href="#experience"
+                className="rounded-full px-4 py-3 font-bold hover:bg-white/8 hover:text-white"
+              >
                 Carreira
               </a>
-              <a href="#stack" className="rounded-full px-4 py-3 font-bold hover:bg-white/8 hover:text-white">
+              <a
+                href="#stack"
+                className="rounded-full px-4 py-3 font-bold hover:bg-white/8 hover:text-white"
+              >
                 Stack
               </a>
-              <a href="#projects" className="rounded-full px-4 py-3 font-bold hover:bg-white/8 hover:text-white">
+              <a
+                href="#projects"
+                className="rounded-full px-4 py-3 font-bold hover:bg-white/8 hover:text-white"
+              >
                 Projetos
               </a>
             </div>
-            <Button asChild variant="accent" className="rounded-full px-4 md:px-5">
+            <Button
+              asChild
+              variant="accent"
+              className="rounded-full px-4 md:px-5"
+            >
               <a href="#contact">
                 <Mail size={16} />
                 Conversar
@@ -135,11 +162,13 @@ export default function Home() {
                   <span className="h-2 w-2 rounded-full bg-primary" />
                   Disponível
                 </span>
-                <span className="text-white/62">Construindo produtos web full stack</span>
+                <span className="text-white/62">
+                  Oportunidades e serviços de desenvolvimento Full Stack.
+                </span>
               </div>
 
               <p className="mb-8 text-xs font-black uppercase tracking-[0.24em] text-white/42">
-                Nº 01 — Full Stack DEV · APIs · Produto
+                Full Stack DEV · APIs · Produto
               </p>
               <h1 className="animate-rise delay-2 max-w-4xl font-display text-[4.6rem] font-black leading-[0.78] text-[#fff3e8] md:text-[8.4rem] lg:text-[9.6rem]">
                 {profile.name}
@@ -159,7 +188,9 @@ export default function Home() {
                 <span className="rounded-full border border-white/12 px-4 py-2 font-bold text-white/88">
                   {profile.headline}
                 </span>
-                <span>— experiência real em sistemas, agora aplicada em produto</span>
+                <span>
+                  — experiência real em sistemas, agora aplicada em produtos.
+                </span>
               </div>
               <p className="mt-7 max-w-2xl text-base font-semibold leading-8 text-white/62 md:text-lg">
                 {profile.shortBio}
@@ -167,7 +198,11 @@ export default function Home() {
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild>
-                  <a href={profile.githubUrl} target="_blank" rel="noreferrer">
+                  <a
+                    href={profile.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Github size={18} />
                     GitHub
                   </a>
@@ -177,7 +212,11 @@ export default function Home() {
                   variant="outline"
                   className="border-white/20 bg-white/5 text-white hover:bg-white/10"
                 >
-                  <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">
+                  <a
+                    href={profile.linkedinUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Linkedin size={18} />
                     LinkedIn
                   </a>
@@ -188,7 +227,11 @@ export default function Home() {
                     variant="outline"
                     className="border-white/20 bg-white/5 text-white hover:bg-white/10"
                   >
-                    <a href={profile.resumeUrl} target="_blank" rel="noreferrer">
+                    <a
+                      href={profile.resumeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FileText size={18} />
                       Currículo
                     </a>
@@ -233,7 +276,9 @@ export default function Home() {
                     <span className="font-display text-3xl font-black text-accent">
                       0{index + 1}
                     </span>
-                    <p className="mt-2 text-sm font-black text-white/74">{stat}</p>
+                    <p className="mt-2 text-sm font-black text-white/74">
+                      {stat}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -251,17 +296,14 @@ export default function Home() {
           />
           <div className="space-y-5 text-lg leading-8 text-muted-foreground">
             <p>
-              Hoje atuo como Analista de Suporte Técnico Pleno, investigando incidentes,
-              validando integrações e analisando APIs, logs e fluxos de sistemas em produção.
+              Hoje atuo como Analista de Suporte Técnico Pleno, investigando
+              incidentes, validando integrações e analisando APIs, logs e fluxos
+              de sistemas em produção.
             </p>
             <p>
-              No desenvolvimento, essa bagagem aparece na forma como penso produto:
-              interface clara, API organizada, banco bem modelado e decisões técnicas
-              conectadas ao problema real.
-            </p>
-            <p className="font-bold text-foreground">
-              Este portfólio existe para destacar essa evolução como DEV Full Stack,
-              com projetos próprios, código publicado e aplicações que saem do papel.
+              No desenvolvimento, essa bagagem aparece na forma como penso
+              produto: interface clara, API organizada, banco bem modelado e
+              decisões técnicas conectadas ao problema real.
             </p>
           </div>
         </div>
@@ -332,7 +374,10 @@ export default function Home() {
                 </p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {project.stack.map((tech) => (
-                    <span className="rounded-full bg-muted px-3 py-1 text-sm font-bold" key={tech}>
+                    <span
+                      className="rounded-full bg-muted px-3 py-1 text-sm font-bold"
+                      key={tech}
+                    >
                       {tech}
                     </span>
                   ))}
@@ -345,7 +390,12 @@ export default function Home() {
                 <div className="mt-6 flex flex-wrap gap-3">
                   {project.githubUrl ? (
                     <Button asChild variant="outline">
-                      <a href={project.githubUrl} target="_blank" rel="noreferrer">
+                      <a
+                        aria-label={`Ver código do projeto ${project.title} no GitHub`}
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Github size={18} />
                         Código
                       </a>
@@ -353,7 +403,12 @@ export default function Home() {
                   ) : null}
                   {project.liveUrl ? (
                     <Button asChild variant="accent">
-                      <a href={project.liveUrl} target="_blank" rel="noreferrer">
+                      <a
+                        aria-label={`Abrir projeto ${project.title} online`}
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <ArrowUpRight size={18} />
                         Ver online
                       </a>
@@ -361,7 +416,12 @@ export default function Home() {
                   ) : null}
                   {project.downloadUrl ? (
                     <Button asChild variant="accent">
-                      <a href={project.downloadUrl} target="_blank" rel="noreferrer">
+                      <a
+                        aria-label={`Baixar ${project.title}`}
+                        href={project.downloadUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Download size={18} />
                         Download
                       </a>
@@ -394,10 +454,14 @@ export default function Home() {
                 <h3 className="mt-2 font-display text-3xl font-black">
                   {experience.role}
                 </h3>
-                <p className="mt-2 font-bold text-primary">{experience.company}</p>
+                <p className="mt-2 font-bold text-primary">
+                  {experience.company}
+                </p>
               </div>
               <div>
-                <p className="leading-7 text-muted-foreground">{experience.summary}</p>
+                <p className="leading-7 text-muted-foreground">
+                  {experience.summary}
+                </p>
                 <ul className="mt-5 grid gap-3 text-sm font-semibold">
                   {experience.activities.map((activity) => (
                     <li key={activity}>- {activity}</li>
@@ -427,13 +491,21 @@ export default function Home() {
               </a>
             </Button>
             <Button asChild variant="outline">
-              <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">
+              <a
+                href={profile.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Linkedin size={18} />
                 LinkedIn
               </a>
             </Button>
             <Button asChild variant="outline">
-              <a href={profile.githubUrl} target="_blank" rel="noreferrer">
+              <a
+                href={profile.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Github size={18} />
                 GitHub
               </a>

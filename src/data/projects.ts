@@ -42,6 +42,7 @@ export const projects: Project[] = [
     stack: ["JavaScript", "Chrome Extensions", "HTML", "CSS"],
     status: "Publicado",
     githubUrl: "https://github.com/Gabriel-Neves-fs/bugsy_public",
+    liveUrl: "https://bugsy-web.vercel.app/",
     downloadUrl:
       "https://drive.google.com/uc?export=download&id=1L4L00ZCQ5T7yriPEDrEIV5VrnzgyNbbw",
     images: [
@@ -54,6 +55,7 @@ export const projects: Project[] = [
     ],
     highlights: [
       "Extensão empacotada para instalação local",
+      "README no GitHub com passo a passo de instalação",
       "Distribuição por arquivo externo",
       "Fluxo pensado para investigação técnica",
       "Interface leve para consulta durante a rotina"

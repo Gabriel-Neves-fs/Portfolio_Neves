@@ -21,5 +21,19 @@ export const experiences: Experience[] = [
       "Interface com times internos e fornecedores para resolução de problemas complexos"
     ],
     stack: ["VTEX", "Omnik", "APIs", "Postman", "Freshservice", "Jira", "Logs"]
+  },
+  {
+    role: "Designer gráfico",
+    company: "FLOR DE MARIA - Embalagens",
+    period: "ago de 2024 - fev de 2026 · 1 ano 7 meses",
+    summary:
+      "Atuação presencial em Itinga do Maranhão, conectando criação visual, atendimento ao cliente, suporte técnico e acompanhamento operacional de pedidos até a entrega final.",
+    activities: [
+      "Criação de artes para impressão, redes sociais e produtos gráficos personalizados",
+      "Operação e manutenção de impressoras durante a rotina de produção",
+      "Atendimento ao cliente, vendas e organização de pedidos personalizados",
+      "Controle de estoque, suporte administrativo e acompanhamento do processo de entrega"
+    ],
+    stack: ["Design gráfico", "Impressão", "Atendimento", "Vendas", "Estoque"]
   }
 ];
