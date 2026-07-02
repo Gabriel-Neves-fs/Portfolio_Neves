@@ -10,18 +10,21 @@ import {
   MapPin
 } from "lucide-react";
 import type { CSSProperties } from "react";
+import { DotField } from "@/components/dot-field";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/section-heading";
+import { StackCarousel } from "@/components/stack-carousel";
 import { TiltedCard } from "@/components/tilted-card";
+import { TrueFocus } from "@/components/true-focus";
 import { experiences } from "@/data/experiences";
 import { profile } from "@/data/profile";
 import { projects, type Project } from "@/data/projects";
 import { skillGroups } from "@/data/skills";
 
 const quickStats = [
+  "DEV Full Stack em evolução",
   "Suporte técnico pleno",
-  "Incidentes, logs e APIs",
-  "Produtos web reais",
+  "Projetos reais publicados",
   "Next.js · Node · PostgreSQL"
 ];
 
@@ -66,8 +69,19 @@ function ProjectPreview({ project }: { project: Project }) {
 
 export default function Home() {
   return (
-    <main className="site-surface overflow-hidden">
-      <section className="ink-panel relative">
+    <main className="site-surface relative overflow-hidden">
+      <div className="dot-field-layer">
+        <DotField
+          dotRadius={2.2}
+          dotSpacing={13}
+          cursorRadius={440}
+          bulgeStrength={58}
+          glowRadius={180}
+          sparkle
+          waveAmplitude={0.5}
+        />
+      </div>
+      <section className="ink-panel relative z-10">
         <div className="section-shell min-h-screen py-4 md:py-5">
           <nav className="glass-nav mx-auto flex w-full max-w-3xl items-center justify-between rounded-full p-2 text-sm md:sticky md:top-4 md:z-20">
             <a className="rounded-full bg-white/8 px-4 py-3 font-black" href="#">
@@ -110,23 +124,31 @@ export default function Home() {
                   <span className="h-2 w-2 rounded-full bg-primary" />
                   Disponível
                 </span>
-                <span className="text-white/62">Projetos web e oportunidades full stack</span>
+                <span className="text-white/62">Construindo produtos web full stack</span>
               </div>
 
               <p className="mb-8 text-xs font-black uppercase tracking-[0.24em] text-white/42">
-                Nº 01 — Suporte Técnico · APIs · Builder
+                Nº 01 — Full Stack DEV · APIs · Produto
               </p>
               <h1 className="animate-rise delay-2 max-w-4xl font-display text-[4.6rem] font-black leading-[0.78] text-[#fff3e8] md:text-[8.4rem] lg:text-[9.6rem]">
                 {profile.name}
               </h1>
-              <p className="animate-rise delay-3 -mt-2 font-display text-[4rem] font-black italic leading-none text-accent md:text-[7.2rem]">
-                Full Stack
-              </p>
+              <div className="animate-rise delay-3 -mt-2 font-display text-[4rem] font-black italic leading-none md:text-[7.2rem]">
+                <TrueFocus
+                  sentence="Full Stack"
+                  blurAmount={2.8}
+                  borderColor="hsl(var(--accent))"
+                  glowColor="rgb(218 156 45 / 0.68)"
+                  animationDuration={0.75}
+                  pauseBetweenAnimations={0.85}
+                  className="true-focus-hero"
+                />
+              </div>
               <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-white/52">
                 <span className="rounded-full border border-white/12 px-4 py-2 font-bold text-white/88">
                   {profile.headline}
                 </span>
-                <span>— projetos reais com Next.js, Node e PostgreSQL</span>
+                <span>— experiência real em sistemas, agora aplicada em produto</span>
               </div>
               <p className="mt-7 max-w-2xl text-base font-semibold leading-8 text-white/62 md:text-lg">
                 {profile.shortBio}
@@ -185,13 +207,13 @@ export default function Home() {
                   className="hero-tilt-card"
                 />
                 <div className="floating-badge floating-badge-a absolute -left-6 top-10 rounded-full border border-white/12 bg-black/70 px-4 py-2 text-xs font-black text-white/75 shadow-2xl">
-                  <span className="text-accent">•</span> Técnico Pleno · Full Stack
+                  <span className="text-accent">•</span> DEV Full Stack
                 </div>
                 <div className="floating-badge floating-badge-b absolute -right-6 top-1/2 rounded-full border border-white/12 bg-black/70 px-4 py-2 text-xs font-black text-white/75 shadow-2xl">
                   <span className="text-accent">•</span> Fintra · Bugsy
                 </div>
                 <div className="floating-badge floating-badge-c absolute -bottom-6 left-8 rounded-full border border-white/12 bg-black/70 px-4 py-2 text-xs font-black text-white/75 shadow-2xl">
-                  <span className="text-accent">•</span> APIs · Logs · Integrações
+                  <span className="text-accent">•</span> Suporte · APIs · Logs
                 </div>
               </div>
               <div className="mt-12 grid gap-3 sm:grid-cols-2">
@@ -213,23 +235,22 @@ export default function Home() {
         <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <SectionHeading
             eyebrow="01 / Sobre"
-            title="Suporte técnico como base para construir software melhor."
-            description="Minha trajetória passa por sistemas em produção, incidentes reais, integrações e contato direto com operação. É daí que vem meu olhar para produto, clareza técnica e resolução de problemas."
+            title="Full Stack com base em sistemas reais."
+            description="Meu foco profissional está em desenvolvimento full stack. A experiência atual como Analista de Suporte Técnico Pleno entra como diferencial: leitura de produção, investigação técnica e entendimento de operação."
           />
           <div className="space-y-5 text-lg leading-8 text-muted-foreground">
             <p>
-              Atuo como Analista de Suporte Técnico Pleno, investigando incidentes,
-              validando integrações e conectando evidências técnicas com impacto real
-              na operação.
+              Hoje atuo como Analista de Suporte Técnico Pleno, investigando incidentes,
+              validando integrações e analisando APIs, logs e fluxos de sistemas em produção.
             </p>
             <p>
-              Essa vivência com VTEX, Omnik, APIs, logs, Postman, Freshservice, Jira
-              e fornecedores fortalece uma habilidade essencial para desenvolvimento:
-              entender problema, contexto, usuário e sistema antes de escrever código.
+              No desenvolvimento, essa bagagem aparece na forma como penso produto:
+              interface clara, API organizada, banco bem modelado e decisões técnicas
+              conectadas ao problema real.
             </p>
             <p className="font-bold text-foreground">
-              Agora, essa base vira produto: interfaces modernas, APIs bem organizadas
-              e projetos full stack que resolvem problemas de verdade.
+              Este portfólio existe para destacar essa evolução como DEV Full Stack,
+              com projetos próprios, código publicado e aplicações que saem do papel.
             </p>
           </div>
         </div>
@@ -239,9 +260,10 @@ export default function Home() {
         <div className="section-shell">
           <SectionHeading
             eyebrow="02 / Stack"
-            title="Stack que conecta interface, API e operação."
-            description="Meu foco está em aplicações web com TypeScript, interfaces bem cuidadas, APIs organizadas e banco relacional. A vivência em suporte complementa essa base com leitura de logs, integrações e diagnóstico técnico."
+            title="Stack para construir produto de ponta a ponta."
+            description="Minha base de desenvolvimento está em TypeScript, Next.js, Node.js e PostgreSQL, conectando interfaces bem cuidadas, APIs organizadas e dados estruturados em aplicações full stack."
           />
+          <StackCarousel groups={skillGroups} />
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {skillGroups.map((group) => (
               <article

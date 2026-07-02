@@ -15,17 +15,5 @@ export const skillGroups: SkillGroup[] = [
   {
     category: "Banco de dados",
     skills: ["PostgreSQL", "SQL", "Supabase"]
-  },
-  {
-    category: "Ferramentas",
-    skills: ["Git", "GitHub", "Postman", "Jira", "Freshservice"]
-  },
-  {
-    category: "E-commerce e integrações",
-    skills: ["VTEX", "Omnik", "APIs", "Logs", "Sustentação"]
-  },
-  {
-    category: "Deploy",
-    skills: ["Vercel", "Render"]
   }
 ];

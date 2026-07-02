@@ -1,0 +1,71 @@
+.focus-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.22em;
+  outline: none;
+  user-select: none;
+}
+
+.focus-word {
+  position: relative;
+  color: hsl(var(--accent));
+  cursor: default;
+  font: inherit;
+  line-height: inherit;
+  outline: none;
+  user-select: none;
+}
+
+.focus-frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-sizing: content-box;
+  border: none;
+  pointer-events: none;
+}
+
+.focus-frame .corner {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--border-color, hsl(var(--accent)));
+  border-radius: 3px;
+  filter: drop-shadow(0 0 8px var(--glow-color, rgb(218 156 45 / 0.62)));
+}
+
+.focus-frame .top-left {
+  left: -10px;
+  top: -10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.focus-frame .top-right {
+  right: -10px;
+  top: -10px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.focus-frame .bottom-left {
+  bottom: -10px;
+  left: -10px;
+  border-right: none;
+  border-top: none;
+}
+
+.focus-frame .bottom-right {
+  bottom: -10px;
+  right: -10px;
+  border-left: none;
+  border-top: none;
+}
+
+.true-focus-hero {
+  justify-content: flex-start;
+  color: hsl(var(--accent));
+}
