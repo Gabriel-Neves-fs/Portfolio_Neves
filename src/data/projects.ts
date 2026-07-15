@@ -79,5 +79,23 @@ export const projects: Project[] = [
       "Leitura e consolidação de dados em planilha Excel",
       "RPA criada a partir de necessidade real do ambiente de trabalho"
     ]
+  },
+  {
+    title: "Automação de EANs na VTEX",
+    slug: "automacao-eans-vtex",
+    description:
+      "Automação RPA em Python para atualizar EANs de produtos na VTEX em massa, usando planilha Excel e API de catálogo.",
+    problem:
+      "Atualizar EANs de mais de 200 produtos sem depender de alterações manuais no painel, reduzindo tempo operacional e risco de erro no cadastro.",
+    stack: ["RPA", "Python", "Pandas", "OpenPyXL", "VTEX Catalog API", "Excel"],
+    status: "Publicado",
+    githubUrl: "https://github.com/Gabriel-Neves-fs/automacao_eans",
+    images: [],
+    highlights: [
+      "Leitura de planilha Excel com SKUs e novos EANs",
+      "Modo dry-run para validar dados antes da execução real",
+      "Consulta, remoção e cadastro de EANs via API da VTEX",
+      "Relatório final em Excel com status de cada linha processada"
+    ]
   }
 ];
