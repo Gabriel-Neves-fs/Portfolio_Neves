@@ -170,33 +170,30 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
 
   return (
     <Carousel
-      className="projects-carousel"
+      className="projects-carousel mx-auto max-w-3xl"
       opts={{
-        align: "start",
+        align: "center",
         loop: true,
       }}
       plugins={[autoplay.current]}
     >
-      <div className="mb-5 flex items-center justify-between gap-4">
+      <div className="mb-5 text-center">
         <p className="text-sm font-bold text-muted-foreground">
           Arraste ou navegue pelas setas para ver os projetos.
         </p>
-        <div className="flex gap-2">
-          <CarouselPrevious className="carousel-arrow static translate-x-0 translate-y-0" />
-          <CarouselNext className="carousel-arrow static translate-x-0 translate-y-0" />
-        </div>
       </div>
 
-      <CarouselContent
-        aria-label="Projetos em destaque"
-        className="projects-carousel-track"
-      >
-        {projects.map((project) => (
-          <CarouselItem className="project-slide" key={project.slug}>
-            <ProjectCard project={project} />
-          </CarouselItem>
-        ))}
-      </CarouselContent>
+      <div className="projects-carousel-stage">
+        <CarouselContent aria-label="Projetos em destaque" className="-ml-0">
+          {projects.map((project) => (
+            <CarouselItem className="basis-full pl-0" key={project.slug}>
+              <ProjectCard project={project} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="carousel-arrow projects-carousel-arrow projects-carousel-arrow-prev" />
+        <CarouselNext className="carousel-arrow projects-carousel-arrow projects-carousel-arrow-next" />
+      </div>
     </Carousel>
   );
 }
