@@ -2,13 +2,19 @@
 
 import {
   ArrowUpRight,
-  ChevronLeft,
-  ChevronRight,
   Download,
   Github,
 } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay";
 import type { CSSProperties } from "react";
 import { useRef } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import type { Project } from "@/data/projects";
 
@@ -154,62 +160,43 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export function ProjectsCarousel({ projects }: { projects: Project[] }) {
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  function move(direction: -1 | 1) {
-    const track = trackRef.current;
-
-    if (!track) {
-      return;
-    }
-
-    const firstSlide = track.querySelector<HTMLElement>(".project-slide");
-    const distance = firstSlide?.offsetWidth ?? track.clientWidth;
-
-    track.scrollBy({
-      left: direction * (distance + 20),
-      behavior: "smooth",
-    });
-  }
+  const autoplay = useRef(
+    Autoplay({
+      delay: 4500,
+      stopOnInteraction: true,
+      stopOnMouseEnter: true,
+    })
+  );
 
   return (
-    <div className="projects-carousel">
+    <Carousel
+      className="projects-carousel"
+      opts={{
+        align: "start",
+        loop: true,
+      }}
+      plugins={[autoplay.current]}
+    >
       <div className="mb-5 flex items-center justify-between gap-4">
         <p className="text-sm font-bold text-muted-foreground">
           Arraste ou navegue pelas setas para ver os projetos.
         </p>
         <div className="flex gap-2">
-          <button
-            aria-label="Projeto anterior"
-            className="carousel-arrow"
-            type="button"
-            onClick={() => move(-1)}
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            aria-label="Próximo projeto"
-            className="carousel-arrow"
-            type="button"
-            onClick={() => move(1)}
-          >
-            <ChevronRight size={20} />
-          </button>
+          <CarouselPrevious className="carousel-arrow static translate-x-0 translate-y-0" />
+          <CarouselNext className="carousel-arrow static translate-x-0 translate-y-0" />
         </div>
       </div>
 
-      <div
+      <CarouselContent
         aria-label="Projetos em destaque"
         className="projects-carousel-track"
-        ref={trackRef}
-        tabIndex={0}
       >
         {projects.map((project) => (
-          <div className="project-slide" key={project.slug}>
+          <CarouselItem className="project-slide" key={project.slug}>
             <ProjectCard project={project} />
-          </div>
+          </CarouselItem>
         ))}
-      </div>
-    </div>
+      </CarouselContent>
+    </Carousel>
   );
 }
